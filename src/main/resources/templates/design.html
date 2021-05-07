@@ -3,12 +3,13 @@
 
 <head>
 	<title>Taco Cloud</title>
-	<link rel="stylesheet" th:href="@{/styles.css}" />
+	<link rel="stylesheet" th:href="@{/styles/main.css}" />
 </head>
 
 <body>
 	<h1>Design your taco!</h1>
 	<img th:src="@{/images/TacoCloud.png}" />
+	
 	<form method="POST" th:object="${taco}">
 		<div class="grid">
 			<div class="ingredient-group" id="wraps">
@@ -53,6 +54,16 @@
 			<br />
 			<button>Submit Your Taco</button>
 		</div>
+			<span class="validationError" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">
+				Name Error	
+			</span>
+		</div>
+		<div>
+			<span class="validationError" th:if="${#fields.hasErrors('ingredients')}" th:errors="*{ingredients}">
+				IngredientError Error	
+			</span>
+		</div>
+		<div>
 	</form>
 </body>
 
